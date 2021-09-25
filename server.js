@@ -4,7 +4,7 @@ const app = express();
 const port = 3000
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb:localhost/negocioPocket', {
+mongoose.connect('mongodb://localhost/negocioPocket', {
     userNewUrlParser: true, userUnifyTopology:true
 })
 
