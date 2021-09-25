@@ -1,6 +1,4 @@
 .vscode/
-views/
-package.jason
-package.json
+views/ 
 package-lock.json
 node_modules/
