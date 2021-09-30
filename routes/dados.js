@@ -13,3 +13,7 @@ const cliente = Cliente.deleteOne({_id: req.params.id}, (err) =>{
         message: "Cliente apagado com sucesso"
     })
 })
+
+app.listen(port, ()=> {
+    console.log(`Rodando servidor pelo localhost $(3000)`)
+});
