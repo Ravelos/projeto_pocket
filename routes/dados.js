@@ -1,19 +1,33 @@
 const express = require("express");
 const router = express.Router();
 const Dados = require("./../models/dados");
+const mongoose = require("mongoose")
+const dados = require("./../models/dados");
+const { Router } = require("express");
 
-const cliente = Cliente.deleteOne({_id: req.params.id}, (err) =>{
-    if(err) return res.status(400).json({
-        error: true,
-        message: "Error: cliente não foi apagado com sucesso!"
-    });
-
-    return res.json({
-        error: false,
-        message: "Cliente apagado com sucesso"
+router.post( '/', async (req, res, next) => {
+    req.dados = new Dados()
+    next()
+    let dados = new Dados({
+        nome : req.body.nome,
+        sobrenome : req.body.nome,
+        cpf : req.body.cpf,
+        endereco : req.body.endereco,
+        plano : req.body.plano,   
     })
-})
+    try{
+        dados = await dados.save()
+        res.redirect(`/dados/${dados.id}`)
+    } catch(e){
+        console.log(e)
+    }
 
-app.listen(port, ()=> {
-    console.log(`Rodando servidor pelo localhost $(3000)`)
-});
+}  )
+
+router.delete('/:id', async (req, res) => {
+    await Article.findByIdAndDelete(req.params.id)
+    res.redirect('/')
+  })
+
+
+module.exports = router
