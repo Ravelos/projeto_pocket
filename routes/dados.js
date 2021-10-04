@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Dados = requite("./../models/dados");
+const Dados = require("./../models/dados");
 
 const cliente = Cliente.deleteOne({_id: req.params.id}, (err) =>{
     if(err) return res.status(400).json({
