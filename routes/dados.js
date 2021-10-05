@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Dado = require('../models/dado')
+const Dado = require('../models/dados')
 
 // Creating one
 router.post('/', async (req, res) => {
