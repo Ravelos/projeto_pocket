@@ -12,7 +12,7 @@ db.once('open', () => console.log('Conectado ao Banco de Dados'))
 app.use(express.json())
 
 const dadosRouter = require('./routes/dados')
-app.use('/subscribers', dadosRouter)
+app.use('/dados', dadosRouter)
 
 app.get('/', (req, res) => {
     res.send("Negocio Pocket")
