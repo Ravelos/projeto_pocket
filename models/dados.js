@@ -29,4 +29,4 @@ const dadoSchema = new mongoose.Schema({
     
 })
 
-module.exports = mongoose.model("Dados", dadoSchema);
+module.exports = mongoose.model("Dado", dadoSchema);
