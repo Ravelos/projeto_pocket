@@ -7,12 +7,11 @@ const port = 3000
 const mongoose = require('mongoose');
 require('dotenv').config()
 mongoose.connect(process.env.MONGO, {
-
 })
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false}))
-app.get("./", (req,res) => {
+app.get("/", (req,res) => {
     res.send("Negocio Pocket")
 } )
 
