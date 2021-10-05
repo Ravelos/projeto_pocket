@@ -10,10 +10,10 @@ router.post( '/', async (req, res, next) => {
     next()
     let dados = new Dados({
         nome : req.body.nome,
-        sobrenome : req.body.nome,
+        sobrenome : req.body.sobrenome,
         cpf : req.body.cpf,
         endereco : req.body.endereco,
-        plano : req.body.plano,   
+        plano : req.body.plano,  
     })
     try{
         dados = await dados.save()
