@@ -38,11 +38,53 @@ router.post('/', async (req, res) => {
   })
 
 router.delete('/:id', async (req, res) => {
-    await Article.findByIdAndDelete(req.params.id)
+    await Dado.findByIdAndDelete(req.params.id)
     res.redirect('/')
   })
 
+  router.get('/:id', async(req,res) =>{
+    const Dado = await Dado.findById(req.params.id)
+    res.render('dados/shows', (dado: dado)) //Não sei como corregi esse erro
   })
+
+  router.get('/edit/:id', async(req, res) =>{ 
+    const Dado = await Dado.findById(req.params.id)
+    res.render('dados/edit',(dado: dado) )// mesmo erro
+  })
+
+  // para pedir por banco de dados
+
+  router.post('/', async(req, res, next)=>{
+    req.dado = newDado()
+
+    next()
+  }),salvar_editar('/new');
+
+  router.put('/:id', async(req,res,next) =>{
+    req.dado = await Dado.findbyId(req,params,id);
+    next();
+  },salvar_editar('edit'));
+  function salvar_editar(path){
+    return async(req,res)=> {
+      let dado = require.dado
+        dado.nome = req.body.nome,
+        dado.sobrenome = req.body.sobrenome,
+        dado.cpf = req.body.cpf,
+        dado.endereco = req.body.endereco,
+        dado.plano = req.body.plano,  
+      }
+    
+      try{
+        dados = await dados.save()
+        res.redirect(`/dados/${dados.id}`)
+    } catch(e){
+        console.log(e)
+    }
+    }
+  }
+
+
+  
   try {
     const newDado = await dado.save()
     res.status(201).json(newDado)
